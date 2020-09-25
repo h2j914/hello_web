@@ -15,7 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from restapi import views as restapiview
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # -- 1. restapi 앱 home(), taskstring() 함수 --
+    path('', restapiview.home, name='home'),
+    path('restapi/task/string', restapiview.taskstring, name='restapi_task_string'),
+    # -- 2. JSON & XML -- 
+    path('restapi/task/xml', restapiview.taskxml, name='restapi_task_xml'),
+    path('restapi/task/json', restapiview.taskjson, name='restapi_task_json'),
 ]
